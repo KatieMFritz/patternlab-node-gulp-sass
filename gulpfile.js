@@ -59,7 +59,7 @@ gulp.task('pl-copy:font', function () {
 
 // SASS Compilation
 gulp.task('pl-sass', function(){
-  return gulp.src(path.resolve(paths().source.css, '**/*.scss'))
+  return gulp.src(path.resolve(paths().source.scss, '**/*.scss'))
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(path.resolve(paths().source.css)));
 });
@@ -199,7 +199,7 @@ function watch() {
   const watchers = [
     {
       name: 'Sass',
-      paths: [normalizePath(paths().source.css, '**', '*.scss')],
+      paths: [normalizePath(paths().source.scss, '**', '*.scss')],
       config: { awaitWriteFinish: true },
       tasks: gulp.series('pl-sass', reloadCSS)
     },
