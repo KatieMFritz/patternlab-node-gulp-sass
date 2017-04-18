@@ -7,7 +7,8 @@ var gulp = require('gulp'),
   path = require('path'),
   browserSync = require('browser-sync').create(),
   argv = require('minimist')(process.argv.slice(2)),
-  chalk = require('chalk');
+  chalk = require('chalk'),
+  sass = require('gulp-sass');
 
 /**
  * Normalize all paths to be plain, paths with no leading './',
@@ -54,6 +55,13 @@ gulp.task('pl-copy:favicon', function () {
 gulp.task('pl-copy:font', function () {
   return gulp.src('*', {cwd: normalizePath(paths().source.fonts)})
     .pipe(gulp.dest(normalizePath(paths().public.fonts)));
+});
+
+// SASS Compilation
+gulp.task('pl-sass', function(){
+  return gulp.src(path.resolve(paths().source.css, '**/*.scss'))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest(path.resolve(paths().source.css)));
 });
 
 // CSS Copy
@@ -119,7 +127,7 @@ gulp.task('pl-assets', gulp.series(
   'pl-copy:img',
   'pl-copy:favicon',
   'pl-copy:font',
-  'pl-copy:css',
+  gulp.series('pl-sass', 'pl-copy:css', function(done){done();}),
   'pl-copy:styleguide',
   'pl-copy:styleguide-css'
 ));
@@ -189,6 +197,12 @@ function reloadCSS(done) {
 
 function watch() {
   const watchers = [
+    {
+      name: 'Sass',
+      paths: [normalizePath(paths().source.css, '**', '*.scss')],
+      config: { awaitWriteFinish: true },
+      tasks: gulp.series('pl-sass', reloadCSS)
+    },
     {
       name: 'CSS',
       paths: [normalizePath(paths().source.css, '**', '*.css')],

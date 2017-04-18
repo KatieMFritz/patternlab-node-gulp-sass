@@ -1,0 +1,16 @@
+{
+  "colors" : [
+    {
+      "color-name": "$color-primary",
+      "hex-code": "#1997a9"
+    },
+    {
+      "color-name": "$color-text",
+      "hex-code": "#6d6e71"
+    },
+    {
+      "color-name": "$color-gray-light",
+      "hex-code": "#eee"
+    }
+  ]
+}
