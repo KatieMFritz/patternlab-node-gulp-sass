@@ -1,0 +1,16 @@
+/**************************
+* COLOR VARIABLES
+***************************/
+// Colors by name
+$color-teal: #1997a9;
+$color-gray: #6d6e71;
+$color-gray-light: #eee;
+
+// Colors by role
+$color-primary: $color-teal;
+$color-text: $color-gray;
+$color-link: $color-primary;
+$color-link--hover: shade($color-link, 20%);
+
+$font-sans-serif: 'Josefin Sans', Arial, sans-serif;
+$font-base: 1rem;

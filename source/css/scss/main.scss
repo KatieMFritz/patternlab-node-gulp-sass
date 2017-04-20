@@ -1,6 +1,13 @@
 /*
  * YOUR STYLES HERE
+ * https://www.lullabot.com/articles/bem-atomic-design-a-css-architecture-worth-loving
  */
+
+ @import '00_base/reset';
+ @import '00_base/mixins';
+ @import '00_base/variables';
+ @import '00_base/typography';
+
  body {
-   background-color: skyblue;
+   background-color: $color-primary;;
  }
