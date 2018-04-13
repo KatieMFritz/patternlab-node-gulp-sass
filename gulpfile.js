@@ -60,6 +60,8 @@ gulp.task('pl-copy:font', function () {
 // SASS Compilation
 // http://www.brianmuenzenmeyer.com/adding-common-gulp-tasks-to-pattern-lab-node
 // https://www.sitepoint.com/simple-gulpy-workflow-sass/
+var sourcemaps = require('gulp-sourcemaps');
+
 gulp.task('pl-sass', function(){
   return gulp
     .src(path.resolve(paths().source.scss, '**/*.scss'))
